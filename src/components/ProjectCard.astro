@@ -1,0 +1,50 @@
+---
+import { Github, ExternalLink } from "@lucide/astro";
+
+interface Props {
+  title: string;
+  description: string;
+  tags: string[];
+  slug: string;
+  github?: string;
+  live?: string;
+}
+
+const { title, description, tags, slug, github, live } = Astro.props;
+---
+
+<article class="group">
+  <div class="p-6 rounded-xl border border-gray-200 dark:border-gray-800 hover:border-indigo-300 dark:hover:border-indigo-800 bg-white dark:bg-gray-900 hover:shadow-lg transition-all h-full flex flex-col">
+    <a href={`/portfolio/${slug}`}>
+      <h3 class="text-lg font-semibold text-gray-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+        {title}
+      </h3>
+      <p class="mt-2 text-sm text-gray-600 dark:text-gray-400 line-clamp-3">{description}</p>
+    </a>
+
+    {tags.length > 0 && (
+      <div class="mt-4 flex flex-wrap gap-2">
+        {tags.map((tag) => (
+          <span class="px-2 py-1 text-xs font-medium rounded-md bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400">
+            {tag}
+          </span>
+        ))}
+      </div>
+    )}
+
+    <div class="mt-auto pt-4 flex items-center gap-3">
+      {github && (
+        <a href={github} target="_blank" rel="noopener noreferrer" class="text-sm text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100 transition-colors flex items-center gap-1">
+          <Github size={16} />
+          Source
+        </a>
+      )}
+      {live && (
+        <a href={live} target="_blank" rel="noopener noreferrer" class="text-sm text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100 transition-colors flex items-center gap-1">
+          <ExternalLink size={16} />
+          Live
+        </a>
+      )}
+    </div>
+  </div>
+</article>

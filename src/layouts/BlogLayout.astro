@@ -1,0 +1,45 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import { ArrowLeft } from "@lucide/astro";
+
+interface Props {
+  title: string;
+  description: string;
+  date: Date;
+  tags: string[];
+  image?: string;
+}
+
+const { title, description, date, tags, image } = Astro.props;
+const formattedDate = date.toLocaleDateString("en-US", {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+});
+---
+
+<BaseLayout title={title} description={description} image={image}>
+  <article class="max-w-3xl mx-auto px-4 py-16">
+    <header class="mb-10">
+      <a href="/blog" class="inline-flex items-center gap-1 text-sm text-indigo-600 dark:text-indigo-400 hover:underline mb-6">
+        <ArrowLeft size={16} />
+        Back to blog
+      </a>
+      <time class="block text-sm text-gray-500 dark:text-gray-400 mb-3">{formattedDate}</time>
+      <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">{title}</h1>
+      <p class="text-lg text-gray-600 dark:text-gray-400">{description}</p>
+      {tags.length > 0 && (
+        <div class="mt-4 flex flex-wrap gap-2">
+          {tags.map((tag) => (
+            <span class="px-2 py-1 text-xs font-medium rounded-md bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400">
+              {tag}
+            </span>
+          ))}
+        </div>
+      )}
+    </header>
+    <div class="prose prose-gray dark:prose-invert prose-headings:tracking-tight prose-a:text-indigo-600 dark:prose-a:text-indigo-400 max-w-none">
+      <slot />
+    </div>
+  </article>
+</BaseLayout>

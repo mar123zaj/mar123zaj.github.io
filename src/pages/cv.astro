@@ -1,0 +1,128 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const experience = [
+  {
+    role: "Senior Software Developer",
+    company: "Company Name",
+    period: "2022 — Present",
+    description: "Leading development of web applications, mentoring junior developers, and driving technical decisions.",
+    highlights: ["System architecture design", "Team mentorship", "CI/CD pipeline optimization"],
+  },
+  {
+    role: "Software Developer",
+    company: "Previous Company",
+    period: "2019 — 2022",
+    description: "Built and maintained full-stack web applications using modern technologies.",
+    highlights: ["React & TypeScript frontend", "REST API development", "Database optimization"],
+  },
+  {
+    role: "Junior Developer",
+    company: "First Company",
+    period: "2017 — 2019",
+    description: "Started career working on web development projects and learning best practices.",
+    highlights: ["Frontend development", "Code reviews", "Agile methodology"],
+  },
+];
+
+const education = [
+  {
+    degree: "Master of Science in Computer Science",
+    school: "University Name",
+    period: "2015 — 2017",
+  },
+  {
+    degree: "Bachelor of Science in Computer Science",
+    school: "University Name",
+    period: "2011 — 2015",
+  },
+];
+
+const skillGroups = [
+  { label: "Programming", items: ["TypeScript", "Python", "Java", "SQL", "HTML/CSS"] },
+  { label: "Frameworks", items: ["React", "Next.js", "Astro", "Spring Boot", "Node.js"] },
+  { label: "Infrastructure", items: ["AWS", "Docker", "Kubernetes", "Terraform", "GitHub Actions"] },
+  { label: "Practices", items: ["TDD", "CI/CD", "Code Review", "Agile/Scrum", "System Design"] },
+];
+---
+
+<BaseLayout title="CV" description="Resume of Marcin Zając — experience, education, and skills.">
+  <div class="max-w-4xl mx-auto px-4 py-16">
+    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-12">
+      <div>
+        <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white">Marcin Zając</h1>
+        <p class="mt-1 text-lg text-gray-600 dark:text-gray-400">Software Developer</p>
+      </div>
+      <a
+        href="/about"
+        class="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-700 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors self-start"
+      >
+        More about me &rarr;
+      </a>
+    </div>
+
+    <section class="mb-16">
+      <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-6 pb-2 border-b border-gray-200 dark:border-gray-800">
+        Experience
+      </h2>
+      <div class="space-y-8">
+        {experience.map(({ role, company, period, description, highlights }) => (
+          <div class="relative pl-6 border-l-2 border-indigo-200 dark:border-indigo-900">
+            <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-indigo-600 dark:bg-indigo-400 border-2 border-white dark:border-gray-950"></div>
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 mb-2">
+              <h3 class="font-semibold text-gray-900 dark:text-white">{role}</h3>
+              <span class="text-sm text-gray-500 dark:text-gray-400 whitespace-nowrap">{period}</span>
+            </div>
+            <p class="text-sm font-medium text-indigo-600 dark:text-indigo-400 mb-2">{company}</p>
+            <p class="text-sm text-gray-600 dark:text-gray-400 mb-3">{description}</p>
+            <ul class="flex flex-wrap gap-2">
+              {highlights.map((h) => (
+                <li class="px-2 py-1 text-xs font-medium rounded-md bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400">
+                  {h}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="mb-16">
+      <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-6 pb-2 border-b border-gray-200 dark:border-gray-800">
+        Education
+      </h2>
+      <div class="space-y-6">
+        {education.map(({ degree, school, period }) => (
+          <div class="relative pl-6 border-l-2 border-indigo-200 dark:border-indigo-900">
+            <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-indigo-600 dark:bg-indigo-400 border-2 border-white dark:border-gray-950"></div>
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
+              <h3 class="font-semibold text-gray-900 dark:text-white">{degree}</h3>
+              <span class="text-sm text-gray-500 dark:text-gray-400 whitespace-nowrap">{period}</span>
+            </div>
+            <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">{school}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section>
+      <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-6 pb-2 border-b border-gray-200 dark:border-gray-800">
+        Skills
+      </h2>
+      <div class="grid gap-6 sm:grid-cols-2">
+        {skillGroups.map(({ label, items }) => (
+          <div>
+            <h3 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-3">{label}</h3>
+            <div class="flex flex-wrap gap-2">
+              {items.map((item) => (
+                <span class="px-3 py-1 text-sm rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300">
+                  {item}
+                </span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  </div>
+</BaseLayout>
