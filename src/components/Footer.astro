@@ -1,10 +1,11 @@
 ---
-import { Github, Linkedin } from "@lucide/astro";
+import { Github, Linkedin, Mail } from "@lucide/astro";
 
 const year = new Date().getFullYear();
 const socialLinks = [
+  { href: "mailto:m.zajac995@gmail.com", label: "Email", Icon: Mail },
   { href: "https://github.com/mar123zaj", label: "GitHub", Icon: Github },
-  { href: "https://linkedin.com/in/", label: "LinkedIn", Icon: Linkedin },
+  { href: "https://linkedin.com/in/mzajac995", label: "LinkedIn", Icon: Linkedin },
 ];
 ---
 
@@ -22,8 +23,8 @@ const socialLinks = [
         {socialLinks.map(({ href, label, Icon }) => (
           <a
             href={href}
-            target="_blank"
-            rel="noopener noreferrer"
+            target={href.startsWith("mailto") ? undefined : "_blank"}
+            rel={href.startsWith("mailto") ? undefined : "noopener noreferrer"}
             aria-label={label}
             class="p-2 rounded-lg text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100 hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors"
           >

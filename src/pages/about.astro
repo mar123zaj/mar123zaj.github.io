@@ -1,68 +1,111 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { Github, Linkedin } from "@lucide/astro";
+import { Github, Linkedin, Mail } from "@lucide/astro";
 
 const experience = [
   {
-    role: "Senior Software Developer",
-    company: "Company Name",
-    period: "2022 — Present",
-    description: "Leading development of web applications, mentoring junior developers, and driving technical decisions.",
-    highlights: ["System architecture design", "Team mentorship", "CI/CD pipeline optimization"],
+    role: "Senior Software Engineer",
+    company: "Pragmatic Coders",
+    period: "Sep 2022 - Present",
+    description:
+      "Worked across 10+ projects in investment, healthcare, crypto, medical, real estate, and logistics. Took full ownership in client-facing roles, covering backend architecture, implementation, DevOps, and Scrum Master responsibilities.",
+    highlights: [
+      "Promoted from Backend Engineer through Full Stack to Senior for ownership and technical leadership",
+      "Leading backend development across dozens of microservices and 3 web frontends (logistics, Poland)",
+      "Co-led design and delivery of enterprise data migration system (real estate SaaS, UAE)",
+      "Rebuilt legacy HR system from scratch with modern stack (Sweden)",
+    ],
   },
   {
-    role: "Software Developer",
-    company: "Previous Company",
-    period: "2019 — 2022",
-    description: "Built and maintained full-stack web applications using modern technologies.",
-    highlights: ["React & TypeScript frontend", "REST API development", "Database optimization"],
+    role: "Node.js Backend Developer",
+    company: "iteo",
+    period: "Apr 2021 - Aug 2022",
+    description:
+      "Developed backend services for web products in banking (MVP), HR, and food-ordering domains. Worked closely with business stakeholders to translate requirements into working systems.",
+    highlights: [],
   },
   {
-    role: "Junior Developer",
-    company: "First Company",
-    period: "2017 — 2019",
-    description: "Started career working on web development projects and learning best practices.",
-    highlights: ["Frontend development", "Code reviews", "Agile methodology"],
+    role: "Chatbot Developer",
+    company: "Capgemini",
+    period: "Jul 2019 - Mar 2021",
+    description:
+      "Built and deployed cloud-based chatbot solutions on GCP for internal and enterprise clients.",
+    highlights: [],
+  },
+  {
+    role: "Reporting Specialist",
+    company: "PwC SDC",
+    period: "Aug 2018 - Jun 2019",
+    description:
+      "Automated reporting workflows in Excel VBA, reducing manual workload. First hands-on programming experience that started the path into software engineering.",
+    highlights: [],
   },
 ];
 
 const education = [
   {
-    degree: "Master of Science in Computer Science",
-    school: "University Name",
-    period: "2015 — 2017",
-  },
-  {
-    degree: "Bachelor of Science in Computer Science",
-    school: "University Name",
-    period: "2011 — 2015",
+    degree: "Bachelor's degree in Mathematics",
+    school: "The Silesian University of Technology",
+    period: "2015 - 2018",
   },
 ];
 
 const skillGroups = [
-  { label: "Programming", items: ["TypeScript", "Python", "Java", "SQL", "HTML/CSS"] },
-  { label: "Frameworks", items: ["React", "Next.js", "Astro", "Spring Boot", "Node.js"] },
-  { label: "Infrastructure", items: ["AWS", "Docker", "Kubernetes", "Terraform", "GitHub Actions"] },
-  { label: "Practices", items: ["TDD", "CI/CD", "Code Review", "Agile/Scrum", "System Design"] },
+  {
+    label: "Backend",
+    items: ["Node.js", "TypeScript", "Java", "Spring Boot", "NestJS", "GraphQL", "REST"],
+  },
+  {
+    label: "Cloud & Infrastructure",
+    items: ["Azure", "GCP", "AWS", "Kubernetes", "Docker", "CI/CD", "Grafana"],
+  },
+  {
+    label: "Data",
+    items: ["PostgreSQL", "CosmosDB", "MongoDB", "MySQL", "Redis", "Event-driven Architecture"],
+  },
+  {
+    label: "Architecture & Leadership",
+    items: [
+      "System Design",
+      "Microservices",
+      "Legacy Modernization",
+      "Scrum",
+      "Mentoring",
+      "Stakeholder Management",
+    ],
+  },
+];
+
+const contactLinks = [
+  { href: "mailto:m.zajac995@gmail.com", label: "m.zajac995@gmail.com", Icon: Mail },
+  { href: "https://github.com/mar123zaj", label: "GitHub", Icon: Github },
+  { href: "https://linkedin.com/in/mzajac995", label: "LinkedIn", Icon: Linkedin },
 ];
 ---
 
-<BaseLayout title="About" description="Marcin Zając — software developer. Background, experience, skills, and contact.">
+<BaseLayout title="About" description="Marcin Zając, Software Architect & Consultant. Background, experience, and skills.">
   <div class="max-w-4xl mx-auto px-4 py-16">
     <!-- Intro -->
     <div class="mb-16">
       <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-2">Marcin Zając</h1>
-      <p class="text-lg text-gray-600 dark:text-gray-400 mb-8">Software Developer</p>
+      <p class="text-lg text-indigo-600 dark:text-indigo-400 font-medium mb-8">Software Architect & Consultant</p>
 
-      <div class="prose prose-gray dark:prose-invert max-w-none">
+      <div class="prose prose-gray dark:prose-invert max-w-none space-y-4">
         <p class="text-lg leading-relaxed">
-          Hi! I'm a software developer who enjoys building things that live on the web.
-          I'm passionate about clean code, thoughtful architecture, and sharing what I learn with others.
+          I'm a software architect with 6+ years of hands-on engineering experience.
+          I've designed and built systems across investment, healthcare, real estate, logistics, and more,
+          working with teams from Europe, Asia, and North America.
         </p>
         <p>
-          I've been working in software development for several years, focusing on full-stack
-          web applications. I believe in writing code that is not only functional but also
-          maintainable and elegant.
+          My background is in mathematics, not computer science. That shaped how I approach problems:
+          analytically, with focus on structure and trade-offs rather than chasing the latest framework.
+          I treat technologies as tools. I pick the right one for the job, not the other way around.
+        </p>
+        <p>
+          What sets me apart from many architects: I code. I don't just draw diagrams and hand them off.
+          I design the system, build the critical foundations, set up the infrastructure, and stay involved
+          through production. I've led vendor handovers, legacy rebuilds, enterprise migrations, and
+          greenfield projects, often as the person who owns the outcome end to end.
         </p>
       </div>
     </div>
@@ -75,20 +118,22 @@ const skillGroups = [
       <div class="space-y-8">
         {experience.map(({ role, company, period, description, highlights }) => (
           <div class="relative pl-6 border-l-2 border-indigo-200 dark:border-indigo-900">
-            <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-indigo-600 dark:bg-indigo-400 border-2 border-white dark:border-gray-950"></div>
+            <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-indigo-600 dark:bg-indigo-400 border-2 border-white dark:border-gray-950" />
             <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 mb-2">
               <h3 class="font-semibold text-gray-900 dark:text-white">{role}</h3>
               <span class="text-sm text-gray-500 dark:text-gray-400 whitespace-nowrap">{period}</span>
             </div>
             <p class="text-sm font-medium text-indigo-600 dark:text-indigo-400 mb-2">{company}</p>
             <p class="text-sm text-gray-600 dark:text-gray-400 mb-3">{description}</p>
-            <ul class="flex flex-wrap gap-2">
-              {highlights.map((h) => (
-                <li class="px-2 py-1 text-xs font-medium rounded-md bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400">
-                  {h}
-                </li>
-              ))}
-            </ul>
+            {highlights.length > 0 && (
+              <ul class="space-y-1">
+                {highlights.map((h) => (
+                  <li class="text-sm text-gray-600 dark:text-gray-400 pl-4 relative before:content-[''] before:absolute before:left-0 before:top-[0.6em] before:w-1.5 before:h-1.5 before:rounded-full before:bg-gray-300 dark:before:bg-gray-700">
+                    {h}
+                  </li>
+                ))}
+              </ul>
+            )}
           </div>
         ))}
       </div>
@@ -102,7 +147,7 @@ const skillGroups = [
       <div class="space-y-6">
         {education.map(({ degree, school, period }) => (
           <div class="relative pl-6 border-l-2 border-indigo-200 dark:border-indigo-900">
-            <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-indigo-600 dark:bg-indigo-400 border-2 border-white dark:border-gray-950"></div>
+            <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-indigo-600 dark:bg-indigo-400 border-2 border-white dark:border-gray-950" />
             <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
               <h3 class="font-semibold text-gray-900 dark:text-white">{degree}</h3>
               <span class="text-sm text-gray-500 dark:text-gray-400 whitespace-nowrap">{period}</span>
@@ -137,28 +182,21 @@ const skillGroups = [
     <!-- Contact -->
     <section class="p-8 rounded-xl bg-indigo-50 dark:bg-indigo-950/50 border border-indigo-100 dark:border-indigo-900">
       <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Get in touch</h2>
-      <p class="text-gray-600 dark:text-gray-400 mb-4">
-        I'm always open to interesting conversations and collaboration opportunities.
+      <p class="text-gray-600 dark:text-gray-400 mb-6">
+        Interested in working together or have a technical challenge to discuss? Reach out.
       </p>
       <div class="flex flex-wrap gap-4">
-        <a
-          href="https://github.com/mar123zaj"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gray-900 dark:bg-white text-white dark:text-gray-900 text-sm font-medium hover:opacity-90 transition-opacity"
-        >
-          <Github size={16} />
-          GitHub
-        </a>
-        <a
-          href="https://linkedin.com/in/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#0A66C2] text-white text-sm font-medium hover:opacity-90 transition-opacity"
-        >
-          <Linkedin size={16} />
-          LinkedIn
-        </a>
+        {contactLinks.map(({ href, label, Icon }) => (
+          <a
+            href={href}
+            target={href.startsWith("mailto") ? undefined : "_blank"}
+            rel={href.startsWith("mailto") ? undefined : "noopener noreferrer"}
+            class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gray-900 dark:bg-white text-white dark:text-gray-900 text-sm font-medium hover:opacity-90 transition-opacity"
+          >
+            <Icon size={16} />
+            {label}
+          </a>
+        ))}
       </div>
     </section>
   </div>

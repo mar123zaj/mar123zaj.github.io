@@ -1,17 +1,78 @@
 ---
-// Redirect / -> /about
-// Remove this file (or replace its content) when a dedicated home page is ready.
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { ArrowRight } from "@lucide/astro";
+
+const pillars = [
+  {
+    title: "Architecture & Design",
+    description:
+      "Designing scalable, maintainable systems, whether greenfield or legacy modernization. Technology-agnostic, focused on the right solution for the problem.",
+  },
+  {
+    title: "Hands-on Engineering",
+    description:
+      "Not just diagrams and documents. I build the foundations I design: backend services, APIs, cloud infrastructure, CI/CD pipelines.",
+  },
+  {
+    title: "Technical Leadership",
+    description:
+      "Driving architectural decisions, leading teams through complex deliveries, bridging the gap between engineering and business stakeholders.",
+  },
+];
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="refresh" content="0;url=/about" />
-    <link rel="canonical" href="/about" />
-    <title>Redirecting…</title>
-  </head>
-  <body>
-    <a href="/about">Redirecting to /about</a>
-  </body>
-</html>
+<BaseLayout
+  title="Software Architect & Consultant"
+  description="Marcin Zając, Software Architect & Consultant. I design, audit, and build scalable software systems."
+>
+  <section class="max-w-4xl mx-auto px-4 pt-24 pb-16 lg:pt-32 lg:pb-20">
+    <div class="flex flex-col-reverse sm:flex-row sm:items-center gap-8 sm:gap-12 mb-10">
+      <div class="flex-1">
+        <p class="text-sm font-medium text-indigo-600 dark:text-indigo-400 mb-4 tracking-wide uppercase">
+          Software Architect & Consultant
+        </p>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-gray-900 dark:text-white mb-6">
+          Marcin Zając
+        </h1>
+        <p class="text-lg sm:text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-2xl">
+          I design, build, and fix software systems. 6+ years of experience across
+          10+ projects and several industries. An architect who codes.
+        </p>
+      </div>
+      <img
+        src="/photo.png"
+        alt="Marcin Zając"
+        class="w-32 h-32 sm:w-40 sm:h-40 rounded-full object-cover ring-2 ring-gray-200 dark:ring-gray-800"
+      />
+    </div>
+    <div class="flex flex-wrap gap-4">
+      <a
+        href="/about"
+        class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-indigo-600 text-white font-medium hover:bg-indigo-700 transition-colors"
+      >
+        More about me
+        <ArrowRight size={16} />
+      </a>
+      <a
+        href="/blog"
+        class="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 font-medium hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+      >
+        Read my writing
+      </a>
+    </div>
+  </section>
+
+  <section class="max-w-4xl mx-auto px-4 pb-24 lg:pb-32">
+    <h2 class="text-sm font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-8">
+      What I do
+    </h2>
+    <div class="grid gap-8 md:grid-cols-3">
+      {pillars.map(({ title, description }) => (
+        <div class="space-y-3">
+          <h3 class="text-lg font-semibold text-gray-900 dark:text-white">{title}</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">{description}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

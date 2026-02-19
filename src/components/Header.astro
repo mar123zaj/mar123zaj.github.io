@@ -1,5 +1,10 @@
 ---
 import ThemeToggle from "./ThemeToggle.astro";
+
+const navLinks = [
+  { href: "/about", label: "About" },
+  { href: "/blog", label: "Blog" },
+];
 ---
 
 <header class="sticky top-0 z-50 border-b border-gray-200 dark:border-gray-800 bg-white/80 dark:bg-gray-950/80 backdrop-blur-md">
@@ -10,6 +15,17 @@ import ThemeToggle from "./ThemeToggle.astro";
     >
       MZ
     </a>
-    <ThemeToggle />
+
+    <div class="flex items-center gap-6">
+      {navLinks.map(({ href, label }) => (
+        <a
+          href={href}
+          class="text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+        >
+          {label}
+        </a>
+      ))}
+      <ThemeToggle />
+    </div>
   </nav>
 </header>
